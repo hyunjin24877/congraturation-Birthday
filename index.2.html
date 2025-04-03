@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>생일 축하</title>
+
+    <!-- ✅ Google Fonts: Kotta One -->
+    <link href="https://fonts.googleapis.com/css2?family=Kotta+One&display=swap" rel="stylesheet">
+
+     <!-- ✅ Pretendard 폰트 로드 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+
+    <style>
+        /* ✅ 헤더 스타일 */
+        .header {
+            display: flex;
+            align-items: center; /* 세로 중앙 정렬 */
+            justify-content: space-between; /* 왼쪽(로고) - 오른쪽(H1) 배치 */
+            padding: 10px 50px;
+        }
+
+        /* ✅ 로고 */
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        /* ✅ H1 중앙 정렬 */
+        .title-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        h1 {
+             font-family: "Kotta One", serif;
+            font-size: 80px;
+            letter-spacing: 5px;
+            color: #E52424;
+            margin: 0;
+        }
+
+        /* ✅ 버튼 컨테이너 */
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px; /* 줄 간격 좁힘 */
+            margin-top: 40px;
+        }
+
+        /* ✅ 버튼 행 배치 */
+        .top-buttons, .bottom-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 200px;
+            align-items: flex-end; /* 버튼 글자 맞추기 */
+        }
+
+        /* ✅ 버튼 스타일 */
+        .button {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* ✅ 개별 이미지 크기 조정 */
+        .button.present img {
+            width: 180px;
+            height: 180px;
+        }
+
+        .button.letter img {
+            width: 260px;
+            height: 260px;
+            margin-bottom: -40px;
+        }
+
+        .button.photo img {
+            margin-top: 20px;
+            width: 180px;
+            height: 180px;
+        }
+
+        .button.song img {
+            width: 220px;
+            height: 220px;
+        }
+
+        .button.wish img {
+            width: 220px;
+            height: 220px;
+            margin-bottom: -20px;
+        }
+
+        /* ✅ 버튼 글자 스타일 */
+        .button p {
+            color: #D9D9D9;
+            font-size: 16px;
+            font-weight: light;
+            margin-top: 8px;
+        }
+
+        /* ✅ 마키 텍스트 스타일 */
+        marquee {
+           font-family: "Pretendard", regular;
+            font-size: 13px;
+            color: #000000;
+        
+            margin-bottom: 22PX;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ 헤더 -->
+    <div class="header">
+        <a href="index.html">
+            <img src="cake.png" alt="BIRTHDAY CAKE!" class="logo">
+        </a>
+        <div class="title-container">
+            <h1>( ) How to Celebrate ?</h1>
+        </div>
+    </div>
+
+    <!-- ✅ 버튼 컨테이너 -->
+    <div class="button-container">
+        <div class="top-buttons">
+            <div class="button present">
+                <a href="present.html">
+                    <img src="present.png" alt="present">
+                </a>
+                <p>present</p>
+            </div>
+
+            <div class="button letter">
+                <a href="post.html">
+                    <img src="package.png" alt="package">
+                </a>
+                <p>Letter</p>
+            </div>
+
+            <div class="button photo">
+                <a href="photo.html">
+                    <img src="birthdaycap.png" alt="photo">
+                </a>
+                <p>photo</p>
+            </div>
+        </div>
+
+        <div class="bottom-buttons">
+            <div class="button song">
+                <a href="playlist.html">
+                    <img src="music.png" alt="song">
+                </a>
+                <p>song</p>
+            </div>
+
+            <div class="button wish">
+                <a href="wish.html">
+                    <img src="fire.png" alt="wish">
+                </a>
+                <p>wish</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ✅ 마키 텍스트 -->
+    <marquee>
+        (    )의 생일을 축하하기 위해 총 5가지 방법을 고안했습니다. 1. 선물주기 2. 편지주기 3. 기록하기 4. 노래 불러주기 5. 소원 빌기 이 중에 하나를 클릭해 원하는 축하를 전하시오.
+    </marquee>
+
+</body>
+</html>

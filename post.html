@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>생일 축하</title>
+
+    <!-- ✅ Google Fonts: Kotta One -->
+    <link href="https://fonts.googleapis.com/css2?family=Kotta+One&display=swap" rel="stylesheet">
+    <!-- ✅ Pretendard 폰트 로드 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <style>
+        /* ✅ 전체 페이지 스타일 */
+        body {
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        /* ✅ 헤더 스타일 */
+        .header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .title-container {
+            flex: 1;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Kotta One", serif;
+            font-size: 80px;
+            color: #E52424;
+            margin: 0 auto;
+            text-align: center;
+            width: 100%;
+        }
+
+        /* ✅ 편지 컨테이너 */
+        .message-container {
+    position: relative;
+    width: 502px;
+    height: auto;
+    margin-top: 100px; /* 원하는 만큼 조정 */
+}
+
+
+        /* ✅ 기본 편지 (회색, 배경처럼 보이도록) */
+        .message-card {
+            background: #F0F0F0;
+            padding: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            text-align: left;
+            border-radius: 10px;
+            position: relative;
+        }
+
+        .message-card h2 {
+            font-family: "Pretendard", sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .message-card p {
+            font-family: "Pretendard", sans-serif;
+            font-size: 16px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* ✅ 붉은 편지지 (사용자 입력 시 계속 추가됨) */
+        .new-letter {
+            background: #E52424;
+            color: white;
+            padding: 30px;
+            max-width: 100%;
+            text-align: left;
+            border-radius: 10px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.2);
+            animation: slideUp 0.5s ease-out;
+            transform: rotate(5deg); /* ✅ 5도 기울기 적용 */
+        }
+
+        .new-letter h2 {
+            font-family: "Pretendard", sans-serif;
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+
+        }
+
+        .new-letter p {
+            font-family: "Pretendard", sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* ✅ 입력창과 버튼 스타일 */
+        .input-container {
+            display: flex;
+            gap: 10px;
+            margin-top: 120px; /* ✅ 입력 필드를 더 아래로 내림 */
+
+        }
+
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            outline: none;
+            width: 300px;
+            text-align: center;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: none;
+            background-color: #fff;
+            color: #E52424;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .input-container button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            color: white;
+        }
+
+        /* ✅ 애니메이션 */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ✅ 헤더 -->
+    <div class="header">
+        <a href="index.html">
+            <img src="cake.png" alt="BIRTHDAY CAKE!" class="logo">
+        </a>
+        <div class="title-container">
+            <h1>birthday letter</h1>
+        </div>
+    </div>
+
+    <!-- ✅ 기본 편지 -->
+    <div class="message-container" id="messageContainer">
+        <div class="message-card">
+            <h2>To. 사랑하는</h2>
+            <p>
+                오늘은 네가 태어난 특별한 날! 매년 맞이하는 생일이지만,  
+                너와 함께하는 이 날은 언제나 새롭고 소중해.  
+                처음 만났을 때부터 지금까지, 너는 내 삶에 기쁨과 따뜻함을 선물해줬어.  
+                네가 걸어온 길이 쉽지만은 않았겠지만, 그 모든 과정을 통해  
+                더욱 멋진 사람이 되었어. 앞으로도 네가 꿈꾸는 모든 일이 이루어지길 바라.  
+                항상 네 곁에서 응원할게! 생일 축하해!  
+            </p>
+            <p style="text-align: right; font-weight: bold;">From. 사랑으로</p>
+        </div>
+    </div>
+
+    <!-- ✅ 입력 필드 & 버튼 (아래로 내림) -->
+    <div class="input-container">
+        <input type="text" id="letterInput" placeholder="편지 내용을 입력하세요." oninput="checkInput()">
+        <button id="submitButton" onclick="submitLetter()" disabled>편지 적기</button>
+    </div>
+
+    <!-- ✅ JavaScript -->
+    <script>
+        function checkInput() {
+            let inputField = document.getElementById("letterInput");
+            let submitButton = document.getElementById("submitButton");
+
+            submitButton.disabled = inputField.value.trim() === "";
+        }
+
+        function submitLetter() {
+            let inputField = document.getElementById("letterInput");
+            let messageContainer = document.getElementById("messageContainer");
+
+            let newLetter = document.createElement("div");
+            newLetter.className = "new-letter";
+            newLetter.innerHTML = `
+                <h2>To. 사랑하는</h2>
+                <p>${inputField.value.trim()}</p>
+                <p style="text-align: right; font-weight: bold;">From. 사랑으로</p>
+            `;
+
+            messageContainer.appendChild(newLetter);
+
+            // 최대 5장까지만 유지
+            if (messageContainer.children.length > 6) {
+                messageContainer.removeChild(messageContainer.children[1]); // 가장 오래된 편지 삭제
+            }
+
+            inputField.value = "";
+            document.getElementById("submitButton").disabled = true;
+        }
+    </script>
+</body>
+</html>

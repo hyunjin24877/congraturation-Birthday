@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrate Wish</title>
+
+    <!-- ✅ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kotta+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <style>
+        body {
+            font-family: 'Pretendard', sans-serif;
+            text-align: center;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ✅ 공통 헤더 스타일 */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 50px;
+            background-color: #ffffff;
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .title-container {
+            flex: 3;
+            text-align: center;
+
+        }
+
+        h1 {
+            font-family: "Kotta One", serif;
+            font-size: 80px;
+            letter-spacing: 5px;
+            color: #E52424;
+            margin: 0;
+
+        }
+
+        /* ✅ 중앙 촛불 */
+        .candle-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .candle-container img {
+            width: 320px; /* 크기를 조정 가능 */
+        }
+
+       /* ✅ 입력창을 화면 하단에 고정 */
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .input-container input {
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            background-color: #eee;
+            outline: none;
+            width: 300px;
+            text-align: center;
+        }
+
+        .input-container button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 20px;
+            border: none;
+            background-color: #fff;
+            color: #E52424;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .input-container button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            color: white;
+        }
+
+
+        /* ✅ 떨어지는 원 */
+        .wish {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: regular;
+            color: white;
+            font-size: 14px;
+            animation: fall 2s ease-out forwards;
+        }
+
+        @keyframes fall {
+            from { top: 50%; opacity: 1; }
+            to { top: 90%; opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ✅ 공통 헤더 -->
+    <div class="header">
+        <a href="index.html">
+            <img src="cake.png" alt="BIRTHDAY CAKE!" class="logo">
+        </a>
+        <div class="title-container">
+            <h1>celebrate wish</h1>
+        </div>
+    </div>
+
+    <!-- ✅ 중앙 촛불 -->
+    <div class="candle-container">
+        <img src="fire.png" alt="Candle Fire">
+    </div>
+
+    <!-- ✅ 화면 맨 아래 입력창 -->
+    <div class="input-container">
+        <input type="text" id="wishInput" placeholder="소원을 적으세요.">
+        <button onclick="dropWish()">확인</button>
+    </div>
+
+    <script>
+        function dropWish() {
+            const input = document.getElementById('wishInput');
+            const wishText = input.value.trim();
+
+            if (wishText === "") return; // 빈 입력 방지
+
+            const wish = document.createElement('div');
+            wish.classList.add('wish');
+            wish.style.backgroundColor = Math.random() > 0.5 ? "#E52424" : "#1E3A8A"; // 랜덤 색상 (빨강, 파랑)
+            wish.textContent = wishText;
+
+            document.body.appendChild(wish);
+
+            // 원이 랜덤 위치에서 떨어지도록 설정
+            const randomX = Math.random() * (window.innerWidth - 120);
+            wish.style.left = `${randomX}px`;
+
+            input.value = ""; // 입력 필드 초기화
+        }
+    </script>
+
+</body>
+</html>

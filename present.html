@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Celebrate Wish</title>
+
+    <!-- ✅ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Kotta+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <style>
+        body {
+            font-family: 'Pretendard', regular;
+            text-align: center;
+            background-color: #fff;
+            margin: 0;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        /* ✅ 공통 헤더 스타일 */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 50px;
+            background-color: #ffffff;
+            width: 100%; /* 추가 */
+        }
+
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        .title-container {
+            flex-grow: 1;
+            text-align: center;
+        }
+
+        h1 {
+            font-family: "Kotta One", serif;
+            font-size: 80px;
+            letter-spacing: 5px;
+            color: #E52424;
+            margin: 0;
+        }
+
+         p {
+            font-family: "Pretendard", sans-serif;
+            font-size: 13px;
+            color: #000000;
+
+            margin-bottom: 22px;
+            margin-top: 40px;
+    </style>
+</head>
+<body>
+
+    <!-- ✅ 공통 헤더 -->
+    <div class="header">
+        <a href="index.html">
+            <img src="cake.png" alt="BIRTHDAY CAKE!" class="logo">
+        </a>
+        <div class="title-container">
+            <h1>celebrate present</h1>
+        </div>
+    </div>
+
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>하트 잡기 게임</title>
+    <style>
+        body {
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            position: relative;
+            height: 100vh;
+            width: 100vw;
+        }
+
+        /* ❤️ 동그라미 스타일 */
+        .heart {
+            width: 60px;
+            height: 60px;
+            background-color: #E52424; /* 🔴 빨간색 */
+            border-radius: 50%; /* ⭕ 동그라미 */
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        /* 🎁 결과 메시지 */
+        .result {
+            position: absolute;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: rgba(0, 0, 0, 0.7);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h1></h1>
+
+    <!-- 결과 메시지 -->
+    <div id="resultMessage" class="result"></div>
+
+    <script>
+        const heartCount = 8;
+
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+
+            // 랜덤 위치 지정
+            const startX = Math.random() * (window.innerWidth - 80);
+            const startY = Math.random() * (window.innerHeight - 80);
+            heart.style.left = `${startX}px`;
+            heart.style.top = `${startY}px`;
+
+            // 클릭 이벤트 (꽝 또는 선물)
+            heart.addEventListener("click", function() {
+                showResult(heart);
+            });
+
+            document.body.appendChild(heart);
+            moveHeart(heart);
+        }
+
+        function moveHeart(heart) {
+            const speed = 2000 + Math.random() * 2000; // 2~4초 간격 이동
+            const move = () => {
+                const newX = Math.random() * (window.innerWidth - 80);
+                const newY = Math.random() * (window.innerHeight - 80);
+                heart.style.transition = `transform ${speed / 1000}s linear`;
+                heart.style.transform = `translate(${newX - parseFloat(heart.style.left)}px, ${newY - parseFloat(heart.style.top)}px)`;
+            };
+
+            setInterval(move, speed);
+        }
+
+        function showResult(heart) {
+            const resultMessage = document.getElementById("resultMessage");
+            const isPrize = Math.random() > 0.5; // 30% 확률
+            resultMessage.innerText = isPrize ? "선물" : "꽝";
+            resultMessage.style.display = "block";
+
+            setTimeout(() => {
+                resultMessage.style.display = "none";
+            }, 1000);
+
+            heart.remove(); // 클릭된 하트 제거
+        }
+
+        // 8개의 동그라미 생성
+        for (let i = 0; i < heartCount; i++) {
+            createHeart();
+        }
+    </script>
+
+    <p>선물을 줄지 말지 게임을 통해 결정하세요</p>
+
+</body>
+</html>

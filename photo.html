@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>생일 축하</title>
+
+    <!-- ✅ Google Fonts: Kotta One -->
+    <link href="https://fonts.googleapis.com/css2?family=Kotta+One&display=swap" rel="stylesheet">
+
+    <!-- ✅ Pretendard 폰트 로드 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+
+    <style>
+        /* ✅ 전체 페이지 스타일 */
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffffff; /* 배경 흰색 */
+        }
+
+        /* ✅ 헤더 스타일 */
+        .header {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            padding: 10px 50px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        /* ✅ 로고 (왼쪽 정렬 유지) */
+        .logo {
+            width: 120px;
+            height: 120px;
+        }
+
+        /* ✅ 타이틀 컨테이너 (h1만 중앙 정렬) */
+        .title-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        /* ✅ 중앙 정렬된 h1 */
+        h1 {
+            font-family: "Kotta One", serif;
+            font-size: 80px;
+            letter-spacing: 5px;
+            color: #E52424;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* ✅ 카메라 컨테이너 */
+        #camera-container {
+            position: relative;
+            width: 100%;
+            max-width: 2000px;
+            height: 754px;
+            margin-top: 200px;
+            border-radius: 10px;
+            overflow: hidden;
+            background-color: white; /* 배경 흰색 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* ✅ 카메라 */
+        #camera {
+            background-color: white;  /* 카메라 배경 흰색 */
+            width: 100%;
+            height: 100%;
+            object-fit: contain; /* 비율 유지하며 꽉 채움 */
+            transform: scaleX(-1); /* 거울 모드 */
+        }
+
+        /* ✅ 모자 이미지 (고정된 위치) */
+        #hat {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            z-index: 2;
+        }
+
+        /* ✅ 안내 문구 */
+        .message {
+            margin-top: 20px;
+            font-family: "Pretendard", reguu;
+            font-size: 13px;
+            color: #000000;
+            margin-bottom: 22px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- ✅ 헤더 -->
+    <div class="header">
+        <a href="index.html">
+            <img src="cake.png" alt="BIRTHDAY CAKE!" class="logo">
+        </a>
+        <div class="title-container">
+            <h1>Birthday Record</h1>
+        </div>
+    </div>
+
+    <!-- ✅ 카메라 영역 -->
+    <div id="camera-container">
+        <video id="camera" autoplay></video>
+        <img id="hat" src="birthdaycap.png" alt="모자 이미지">
+    </div>
+
+    <script>
+        // ✅ 카메라 설정
+        const video = document.getElementById('camera');
+
+        async function setupCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+            } catch (err) {
+                console.error("카메라에 접근할 수 없습니다.", err);
+            }
+        }
+
+        setupCamera();
+    </script>
+
+    <!-- ✅ 안내 문구 -->
+    <p class="message">
+        생일 모자를 쓰고 추억을 기록해보세요.
+    </p>
+
+</body>
+</html>
